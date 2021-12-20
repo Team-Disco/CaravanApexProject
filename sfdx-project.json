@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "CaravanApexProject",
+  "namespace": "",
+  "sfdcLoginUrl": "https://resourceful-badger-651dgo-dev-ed.my.salesforce.com/",
+  "sourceApiVersion": "52.0"
+}
