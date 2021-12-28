@@ -63,4 +63,31 @@ public with sharing class test implements myInterface {
         switch the order of ourtwo for loops.
         */
     }
+
+    public static void calcTotalMoney(List<Order> changeList) {
+
+        //create and populate set of ids of accounts being modified
+        Set<Id> idList = new Set<Id>();
+        for (Order curOrder : changeList) {
+            idList.add(curOrder.AccountId);
+        }
+
+        //get list of orders related to accounts in idlist
+        List<Account> relatedAccountList = [SELECT name, (SELECT name, TotalAmount FROM Orders) FROM Account WHERE Account.Id IN :idList];
+
+        for (Integer i = 0; i < relatedAccountList.size(); i++) {
+            Double rollingSum = 0;
+            Account curAccount = relatedAccountList.get(i);
+
+            //add up TotalAmounts from orders
+            for (Order curOrder : curAccount.Orders) {
+                rollingSum += curOrder.TotalAmount;
+            }
+
+            //need to create some custom field to hold this
+            curAccount.OrderSum = rollingSum;
+        }
+
+        UPDATE relatedAccountList;
+    }
 }

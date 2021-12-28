@@ -6,9 +6,6 @@ public with sharing class EnchantmentTriggerHandler {
         for (Enchantment__c curEnchantment : changeList) {
             idSet.add(curEnchantment.Product__c);
         }
-        
-        //Map to hold product2.Id to sumEnchantmentRating relationship to avoid modificaiton during iteration error
-        Map<Id, Integer> sumEnchantmentRatingMap = new Map<Id, Integer>();
 
         //select all products in our idSet and return their list of enchantments too.
         List<Product2> parentProductList = [SELECT name, (SELECT name, enchantment_rating__c FROM Enchantments__r) FROM Product2 WHERE Id IN :idSet];
@@ -29,6 +26,5 @@ public with sharing class EnchantmentTriggerHandler {
 
         //commit changes to products
         UPDATE parentProductList;
-        
     }
 }
