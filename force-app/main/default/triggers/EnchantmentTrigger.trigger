@@ -23,11 +23,11 @@ trigger EnchantmentTrigger on Enchantment__c (before insert, before update, befo
         }
         when AFTER_DELETE { 
             // Fires on Merge
-            // Can use trigger.old here
+            // Must use trigger.old here
+            EnchantmentTriggerHandler.updateParentEnchantmentScore(trigger.old);
         }
         when AFTER_UNDELETE {
-            
+            EnchantmentTriggerHandler.updateParentEnchantmentScore(trigger.new);
         }
     }
-
 }
