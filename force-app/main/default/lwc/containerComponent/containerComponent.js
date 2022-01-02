@@ -32,6 +32,11 @@ export default class ContainerComponent extends LightningElement {
         return this.record.data.fields.Magical_Defense_Rating__c.value;
     }
 
+    constructor() {
+        super();
+        this.passStatGraphData();
+    }
+
     passStatGraphData() {
         this.fieldNames = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
         this.fieldValues = [this.utilityRating, this.physicalOffenseRating, this.physicalDefenseRating, this.magicalDefenseRating, this.magicalOffenseRating];

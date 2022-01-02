@@ -23,7 +23,11 @@ export default class StatGraph extends LightningElement {
         super();
         this.graphCenter[0] = Math.round(this.graphSize/2);
         this.graphCenter[1] = Math.round(this.graphSize/2);
-        this.drawStatGraph();
+        if ( this.statList !== undefined && this.statNamesList !== undefined) {
+            this.drawStatGraph();
+        } else {
+            this.drawStatGraph();
+        }
     }
 
     drawStatGraph() {
