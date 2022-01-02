@@ -1,3 +1,5 @@
 <template>
-    <c-stat-graph stat-names-list={fieldNames} stat-list={fieldValues}></c-stat-graph>
+    <div if:true={record.data}  class='container'>
+        <c-stat-graph stat-names-list={fieldNames} stat-list={fieldValues}></c-stat-graph>
+    </div>
 </template>

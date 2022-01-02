@@ -17,17 +17,11 @@ export default class StatGraph extends LightningElement {
     statList = [0, 0, 0, 0, 0]; //util, phys off, phys def, mag def, mag off
     @api
     statNamesList = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
-    
 
-    constructor() {
-        super();
+    renderedCallback() {
         this.graphCenter[0] = Math.round(this.graphSize/2);
         this.graphCenter[1] = Math.round(this.graphSize/2);
-        if ( this.statList !== undefined && this.statNamesList !== undefined) {
-            this.drawStatGraph();
-        } else {
-            this.drawStatGraph();
-        }
+        this.drawStatGraph();
     }
 
     drawStatGraph() {

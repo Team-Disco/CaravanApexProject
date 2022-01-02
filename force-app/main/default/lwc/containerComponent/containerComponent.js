@@ -1,46 +1,37 @@
 import { api, LightningElement, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 
+import UTILITY_RATING_FIELD from '@salesforce/schema/Product2.Utility_Rating__c';
+import PHYSICAL_OFFENSE_RATING_FIELD from '@salesforce/schema/Product2.Physical_Offense_Rating__c';
+import PHYSICAL_DEFENSE_RATING_FIELD from '@salesforce/schema/Product2.Physical_Defense_Rating__c';
+import MAGICAL_OFFENSE_RATING_FIELD from '@salesforce/schema/Product2.Magical_Offense_Rating__c';
+import MAGICAL_DEFENSE_RATING_FIELD from '@salesforce/schema/Product2.Magical_Defense_Rating__c';
+
 export default class ContainerComponent extends LightningElement {
     @api
     recordId;
 
-    @wire(getRecord, {recordId: '$recordId', fields: ['Utility_Rating__c', 'Physical_Offense_Rating__c',
-    'Physical_Defense_Rating__c', 'Magical_Defense_Rating__c', 'Magical_Offense_Rating__c']})
+    fieldNames = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
+
+    @wire(getRecord, {recordId: '$recordId', fields: [UTILITY_RATING_FIELD, PHYSICAL_OFFENSE_RATING_FIELD,
+        PHYSICAL_DEFENSE_RATING_FIELD, MAGICAL_DEFENSE_RATING_FIELD, MAGICAL_OFFENSE_RATING_FIELD]})
     record;
 
-    fieldNames;
-    fieldValues;
-
-    get utilityRating() {
-        return this.record.data.fields.Utility_Rating__c.value;
+    get fieldValues() {
+        return [this.record.data.fields.Utility_Rating__c.value, this.record.data.fields.Physical_Offense_Rating__c.value, this.record.data.fields.Physical_Defense_Rating__c.value,
+        this.record.data.fields.Magical_Defense_Rating__c.value, this.record.data.fields.Magical_Offense_Rating__c.value];
     }
 
-    get physicalOffenseRating() {
-        return this.record.data.fields.Physical_Offense_Rating__c.value;
+    /*
+    passGraphData({error, data}) {
+        if (data) {
+            this.fieldValues = [data.fields.Utility_Rating__c.value, data.fields.Physical_Offense_Rating__c.value, data.fields.Physical_Defense_Rating__c.value,
+            data.fields.Magical_Offense_Rating__c.value, data.fields.Magical_Defense_Rating__c.value];
+        } else if (error) {
+            this.fieldValues = [50,70,50,70,50];
+        }
+        this.renderGraph = true;
     }
-
-    get physicalDefenseRating() {
-        return this.record.data.fields.Physical_Defense_Rating__c.value;
-    }
-
-    get magicalOffenseRating() {
-        return this.record.data.fields.Magical_Offense_Rating__c.value;
-    }
-
-    get magicalDefenseRating() {
-        return this.record.data.fields.Magical_Defense_Rating__c.value;
-    }
-
-    constructor() {
-        super();
-        this.passStatGraphData();
-    }
-
-    passStatGraphData() {
-        this.fieldNames = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
-        this.fieldValues = [this.utilityRating, this.physicalOffenseRating, this.physicalDefenseRating, this.magicalDefenseRating, this.magicalOffenseRating];
-    }
-
+    */
 
 }
