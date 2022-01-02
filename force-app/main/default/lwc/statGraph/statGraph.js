@@ -1,19 +1,36 @@
-import { LightningElement } from 'lwc';
+import { api, LightningElement } from 'lwc';
 
 export default class StatGraph extends LightningElement {
+    //values affecting graph size
+    graphCenter = [200, 200];
+    @api
+    baseGraphSize = 5;
+    @api
+    graphSegments = 5;
+    @api
+    graphSegmentSize = 20;
+    @api
+    graphSize = 400;
+
+    //values affecting graph values
+    @api
+    statList = [50, 50, 50, 50, 50]; //util, phys off, phys def, mag def, mag off
+    @api
+    statNamesList = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
+    
+
+    constructor() {
+        super();
+        this.graphCenter[0] = Math.round(this.graphSize/2);
+        this.graphCenter[1] = Math.round(this.graphSize/2);
+        this.drawStatGraph();
+    }
+
     drawStatGraph() {
-        let canvas = document.getElementById('statgraph');
-        let graphCenter = [201, 201];
-        let baseGraphSize = 5;
+        let canvas = this.template.querySelector('.statgraph');
 
-        //TEST VARIABLES
-        let statList = [50, 50, 50, 50, 50]; //util, phys off, phys def, mag def, mag off
-        let statNamesList = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
-        let numStats = statList.length;
+        let numStats = this.statList.length;
         let degreeChange = 360/numStats;
-        //END TEST VARIABLES
-
-        //TODO Make the size of the component changeable based on values passed to component
 
         //check if browser supports canvas feature
         if (canvas.getContext) {
@@ -23,19 +40,19 @@ export default class StatGraph extends LightningElement {
             //draw stat graph outline
             context.strokeStyle = 'Grey';
             let rollingDegrees = -90;
-            for (let increment = 20 + baseGraphSize; increment <= 100 + baseGraphSize; increment += 20) {
+            for (let increment = this.graphSegmentSize + this.baseGraphSize; increment <= (this.graphSegmentSize * this.graphSegments) + this.baseGraphSize; increment += this.graphSegmentSize) {
                 context.beginPath();
                 for(let index = 0; index < numStats; index++) {
                     //calculate x and y
                     let x = increment * Math.cos(rollingDegrees * (Math.PI/180));
                     let y = increment * Math.sin(rollingDegrees * (Math.PI/180));
     
-                    context.lineTo(graphCenter[0] + x, graphCenter[1] + y);
-                    if (increment == 100 + baseGraphSize) {
+                    context.lineTo(this.graphCenter[0] + x, this.graphCenter[1] + y);
+                    if (increment === ((this.graphSegmentSize * this.graphSegments) + this.baseGraphSize)) {
 
-                        if(numStats%2 == 0) {
+                        if(numStats % 2 === 0) {
                             //even numstats
-                            if(index == 0 || index == numStats/2) {
+                            if(index === 0 || index === numStats/2) {
                                 context.textAlign = 'center';
                             } else if (index < numStats/2) {
                                 context.textAlign = 'start';
@@ -44,7 +61,7 @@ export default class StatGraph extends LightningElement {
                             }
                         } else {
                             //odd numstats
-                            if(index == 0) {
+                            if(index === 0) {
                                 context.textAlign = 'center';
                             } else if (index <= numStats/2) {
                                 context.textAlign = 'start';
@@ -52,10 +69,9 @@ export default class StatGraph extends LightningElement {
                                 context.textAlign = 'end';
                             }
                         }
-                    	context.fillText(statNamesList[index], graphCenter[0] + (x * 1.08), graphCenter[1] + (y * 1.08));
+                        context.fillText(this.statNamesList[index], this.graphCenter[0] + (x * 1.08), this.graphCenter[1] + (y * 1.08));
                     }
                     
-    
                     //increment rolling degrees
                     rollingDegrees += degreeChange;
                 }
@@ -72,10 +88,10 @@ export default class StatGraph extends LightningElement {
             rollingDegrees = -90;
             for(let index = 0; index < numStats; index++) {
                 //calculate x and y
-                let x = (statList[index] + baseGraphSize) * Math.cos(rollingDegrees * (Math.PI/180));
-                let y = (statList[index] + baseGraphSize) * Math.sin(rollingDegrees * (Math.PI/180));
+                let x = (this.statList[index] + this.baseGraphSize) * Math.cos(rollingDegrees * (Math.PI/180));
+                let y = (this.statList[index] + this.baseGraphSize) * Math.sin(rollingDegrees * (Math.PI/180));
 
-                context.lineTo(graphCenter[0] + x, graphCenter[1] + y);
+                context.lineTo(this.graphCenter[0] + x, this.graphCenter[1] + y);
 
                 //increment rolling degrees
                 rollingDegrees += degreeChange;
