@@ -14,7 +14,7 @@ export default class StatGraph extends LightningElement {
 
     //values affecting graph values
     @api
-    statList = [50, 50, 50, 50, 50]; //util, phys off, phys def, mag def, mag off
+    statList = [0, 0, 0, 0, 0]; //util, phys off, phys def, mag def, mag off
     @api
     statNamesList = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
     
