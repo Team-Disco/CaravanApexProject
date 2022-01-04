@@ -22,16 +22,4 @@ export default class ContainerComponent extends LightningElement {
         this.record.data.fields.Magical_Defense_Rating__c.value, this.record.data.fields.Magical_Offense_Rating__c.value];
     }
 
-    /*
-    passGraphData({error, data}) {
-        if (data) {
-            this.fieldValues = [data.fields.Utility_Rating__c.value, data.fields.Physical_Offense_Rating__c.value, data.fields.Physical_Defense_Rating__c.value,
-            data.fields.Magical_Offense_Rating__c.value, data.fields.Magical_Defense_Rating__c.value];
-        } else if (error) {
-            this.fieldValues = [50,70,50,70,50];
-        }
-        this.renderGraph = true;
-    }
-    */
-
 }

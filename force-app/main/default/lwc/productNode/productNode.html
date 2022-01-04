@@ -1,0 +1,8 @@
+<template>
+    <template if:true={record.data}>
+        <div class='container'>
+            <img src={imagePath}>
+            <p>{record.data.fields.Name.value}</p>
+        </div>
+    </template>
+</template>

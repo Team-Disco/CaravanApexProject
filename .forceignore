@@ -14,3 +14,7 @@ package.xml
 # LWC Jest
 **/__tests__/**
 **/__mock__/**
+
+# Tests
+**/EnchantmentTriggerHandlerTest.cls
+**/EnchantmentTriggerHandlerTest.cls-meta.xml

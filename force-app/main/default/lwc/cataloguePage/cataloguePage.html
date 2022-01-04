@@ -1,0 +1,10 @@
+<template>
+    <template if:true={productIdList.data}>
+        <template for:each={productIdList.data} for:item="recordId" class='productListContainer'>
+            <div key={recordId.Id}>
+                <c-product-node product-id={recordId.Id}></c-product-node>
+                <p>{recordId.Name}</p>
+            </div>
+        </template>
+    </template>
+</template>
