@@ -4,6 +4,10 @@
 
 .mainContainer {
     display: flex;
+    background: rgb(122,255,122);
+    background: linear-gradient(90deg, rgba(122,255,122,1) 0%, rgba(122,255,122,1) 0%, rgba(255,255,255,1) 100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .productListContainer {
@@ -32,11 +36,8 @@
     color: red;
 }
 
-.statGraph {
-    
-}
-
 .description {
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-left: 10px;
 }
