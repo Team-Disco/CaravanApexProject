@@ -1,10 +1,29 @@
 <template>
     <template if:true={productIdList.data}>
-        <template for:each={productIdList.data} for:item="recordId" class='productListContainer'>
-            <div key={recordId.Id}>
-                <c-product-node product-id={recordId.Id}></c-product-node>
-                <p>{recordId.Name}</p>
+
+        <div class='mainContainer' onproductnodeclicked={updateStatGraph}>
+            <div class ='productListContainer'>
+                <template for:each={productIdList.data} for:item="recordId">
+                    <div key={recordId.Id} class='productNodeContainer'>
+                        <c-product-node product-id={recordId.Id}></c-product-node>
+                    </div>
+                </template>
             </div>
-        </template>
+
+            <div class='sideBarContainerContainer'>
+                <div class='sideBarContainer'>
+                    <c-stat-graph stat-names-list={fieldNames} stat-list={fieldValues} class='statGraph'></c-stat-graph>
+                    
+                    <p class='description'><b>Name:</b> {recordName}</p>
+                    <template if:false={isAvailable}>
+                        <p class='unavailableText'>Unavailable</p>
+                    </template>
+                    <p class='description'><b>Category: {recordCategory}</b> </p>
+                    <p class='description'><b>Size: {recordSize}</b> </p>
+                    <p class='description'><b>Enchantment Rating: {recordEnchantmentRating}</b> </p>
+                    
+                </div>
+            </div>
+        </div>
     </template>
 </template>

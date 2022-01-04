@@ -9,8 +9,16 @@ export default class ProductNode extends LightningElement {
     productId;
 
     imagePath = '';//ARMOREDGLOVES;
-    productName = 'Default Product Name';
 
     @wire(getRecord, {recordId: '$productId', fields: [NAME]})
     record;
+
+    get productName() {
+        return this.record.data.fields.Name.value;
+    }
+
+    fireEvent() {
+        let myEvent = new CustomEvent('productnodeclicked', {detail: this.productId, bubbles: true, composed: true});
+        this.dispatchEvent(myEvent);
+    }
 }

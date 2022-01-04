@@ -24,6 +24,7 @@ export default class StatGraph extends LightningElement {
         this.drawStatGraph();
     }
 
+    @api
     drawStatGraph() {
         let canvas = this.template.querySelector('.statgraph');
 
@@ -34,6 +35,10 @@ export default class StatGraph extends LightningElement {
         if (canvas.getContext) {
             //canvas setup
             let context = canvas.getContext('2d');
+
+            //clear canvas for redraws
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = 'Black';
 
             //draw stat graph outline
             context.strokeStyle = 'Grey';
@@ -93,7 +98,6 @@ export default class StatGraph extends LightningElement {
 
                 //increment rolling degrees
                 rollingDegrees += degreeChange;
-                console.log('Coordinates: ' + x + ', ' + y);
             }
 
             context.fill();

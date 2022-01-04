@@ -1,0 +1,42 @@
+.productNodeContainer {
+    margin: 5px;
+}
+
+.mainContainer {
+    display: flex;
+}
+
+.productListContainer {
+    display: flex;
+    flex-grow: 2;
+    flex-wrap: wrap;
+}
+
+.sideBarContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
+.sideBarContainerContainer {
+    min-height: 100%;
+    background: rgb(109,229,236);
+    background: linear-gradient(180deg, rgba(109,229,236,1) 0%, rgba(196,250,254,1) 40%, rgba(255,255,255,1) 100%);
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.unavailableText {
+    color: red;
+}
+
+.statGraph {
+    
+}
+
+.description {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -1,8 +1,8 @@
 <template>
     <template if:true={record.data}>
-        <div class='container'>
+        <div class='container' onclick={fireEvent}>
             <img src={imagePath}>
-            <p>{record.data.fields.Name.value}</p>
+            <p>{productName}</p>
         </div>
     </template>
 </template>
