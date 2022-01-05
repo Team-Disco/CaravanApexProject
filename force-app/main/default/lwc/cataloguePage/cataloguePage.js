@@ -15,7 +15,7 @@ import MAGICAL_OFFENSE_RATING_FIELD from '@salesforce/schema/Product2.Magical_Of
 import MAGICAL_DEFENSE_RATING_FIELD from '@salesforce/schema/Product2.Magical_Defense_Rating__c';
 
 export default class CataloguePage extends LightningElement {
-    fieldNames = ['Utility2', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
+    fieldNames = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
 
     record;
     currentOffset = 0;
@@ -107,6 +107,8 @@ export default class CataloguePage extends LightningElement {
     }
 
     updateSearchProducts() {
+        this.currentPage = 1;
+        this.currentOffset = 0;
         this.search = this.template.querySelector('.inputBox').value;
     }
 }
