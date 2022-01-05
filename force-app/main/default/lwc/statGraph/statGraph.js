@@ -11,6 +11,8 @@ export default class StatGraph extends LightningElement {
     graphSegmentSize = 20;
     @api
     graphSize = 400;
+    @api
+    graphColor = '#5DFFF8B3';
 
     //values affecting graph values
     @api
@@ -85,7 +87,7 @@ export default class StatGraph extends LightningElement {
             
 
             //draw stat graph
-            context.fillStyle = '#6FD1F5B3';
+            context.fillStyle = this.graphColor;
             context.beginPath();
             
             rollingDegrees = -90;
@@ -99,7 +101,7 @@ export default class StatGraph extends LightningElement {
                 //increment rolling degrees
                 rollingDegrees += degreeChange;
             }
-
+            
             context.fill();
             context.closePath();
             

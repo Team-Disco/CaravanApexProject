@@ -1,0 +1,52 @@
+.links {
+    color: black;
+}
+
+.websiteName {
+    font-family: Papyrus, fantasy;
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.backToTopButton {
+    background: rgb(245,255,79);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(245,255,79);
+}
+
+.backToTopButton:hover {
+    cursor: pointer;
+    border-color: #434444;
+}
+
+.footerBody {
+    background: rgb(245,255,79);
+    background: linear-gradient(90deg, rgba(245,255,79,1) 0%, rgba(246,255,103,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+.websiteLogo {
+    height: 80px;
+    width: 80px;
+}
+
+.logoandname {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.otherInfo {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.contactInfo {
+    margin-bottom: 20px;
+}

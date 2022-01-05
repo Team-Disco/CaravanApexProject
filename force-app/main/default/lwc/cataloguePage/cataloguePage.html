@@ -1,27 +1,48 @@
 <template>
     <template if:true={productIdList.data}>
-
-        <div class='mainContainer' onproductnodeclicked={updateStatGraph}>
-            <div class ='productListContainer'>
+        <div class="catalogueControls">
+            <div class="searchBarAndButton">
+                <input type="text" placeholder="Search..." class='inputBox'/>
+                <button class="searchButton" type="submit" onclick={updateSearchProducts}>Search</button>
+            </div>
+            <div class="pageConfig">
+                <p class='pPerPage'>Products Per Page: </p>
+                <select name="cars" id="cars" onchange={updateProductsPerPage} class='select'>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+            </div>
+            <div class="pageControls">
+                <button class='prevButton' onclick={updatePrevPage}>Previous Page</button>
+                <p class='curPage'>{currentPage}</p>
+                <button class='nextButton' onclick={updateNextPage}>Next Page</button>
+            </div>
+        </div>
+        <div class="mainContainer" onproductnodeclicked={updateStatGraph}>
+            <div class="productListContainer">
                 <template for:each={productIdList.data} for:item="recordId">
-                    <div key={recordId.Id} class='productNodeContainer'>
+                    <div key={recordId.Id} class="productNodeContainer">
                         <c-product-node product-id={recordId.Id}></c-product-node>
                     </div>
                 </template>
             </div>
 
-            <div class='sideBarContainerContainer'>
-                <div class='sideBarContainer'>
-                    <c-stat-graph stat-names-list={fieldNames} stat-list={fieldValues} class='statGraph'></c-stat-graph>
-                    
-                    <p class='description'><b>Name:</b> {recordName}</p>
+            <div class="sideBarContainerContainer">
+                <div class="sideBarContainer">
+                    <c-stat-graph stat-names-list={fieldNames} stat-list={fieldValues} class="statGraph"
+                        graph-color='#FFFC48B3'></c-stat-graph>
+
+                    <p class="description"><b>Name:</b> {recordName}</p>
                     <template if:false={isAvailable}>
-                        <p class='unavailableText'>Unavailable</p>
+                        <p class="unavailableText description">Unavailable</p>
                     </template>
-                    <p class='description'><b>Category:</b> {recordCategory}</p>
-                    <p class='description'><b>Size:</b> {recordSize}</p>
-                    <p class='description'><b>Enchantment Rating:</b> {recordEnchantmentRating}</p>
-                    
+                    <p class="description"><b>Category:</b> {recordCategory}</p>
+                    <p class="description"><b>Size:</b> {recordSize}</p>
+                    <p class="description">
+                        <b>Enchantment Rating:</b> {recordEnchantmentRating}
+                    </p>
                 </div>
             </div>
         </div>

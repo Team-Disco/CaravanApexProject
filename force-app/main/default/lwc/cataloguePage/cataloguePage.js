@@ -20,11 +20,14 @@ export default class CataloguePage extends LightningElement {
     record;
     currentOffset = 0;
     childStatGraph = this.template.querySelector('.statGraph');
+    currentPage = 1;
+    perPage = 30;
+    search = '';
 
     @track
     recordId;
 
-    @wire(getProductIds, {offset: '$currentOffset'})
+    @wire(getProductIds, {offset: '$currentOffset', perpage: '$perPage', search: '$search'})
     productIdList;
 
     @wire(getRecord, {recordId: '$recordId', fields: [NAME, ISACTIVE, CATEGORY, ENCHANTMENTRATING, SIZE, UTILITY_RATING_FIELD, PHYSICAL_OFFENSE_RATING_FIELD,
@@ -85,5 +88,25 @@ export default class CataloguePage extends LightningElement {
 
     updateStatGraph(event) {
         this.recordId = event.detail;
+    }
+
+    updateProductsPerPage() {
+        this.perPage = this.template.querySelector('.select').value;
+    }
+
+    updateNextPage() {
+        this.currentOffset = this.currentPage * this.perPage;
+        this.currentPage += 1;
+    }
+
+    updatePrevPage() {
+        if (this.currentPage > 1) {
+            this.currentPage -= 1;
+            this.currentOffset = (this.currentPage - 1) * this.perPage;
+        }
+    }
+
+    updateSearchProducts() {
+        this.search = this.template.querySelector('.inputBox').value;
     }
 }
