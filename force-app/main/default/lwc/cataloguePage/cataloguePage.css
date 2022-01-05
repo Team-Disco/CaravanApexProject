@@ -1,0 +1,93 @@
+input {
+    width: 40vw;
+    min-width: 400px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.pPerPage {
+    margin-right: 8px;
+}
+
+.searchButton {
+    padding-top: 4px;
+    padding-bottom: 3px;
+}
+
+.prevButton {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.curPage {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nextButton {
+    width: 150px;
+    margin-right: 10px;
+}
+
+
+.productNodeContainer {
+    margin: 5px;
+}
+
+.pageControls {
+    display: flex;
+}
+
+.pageConfig {
+    display: flex;
+}
+
+.catalogueControls {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgb(109,229,236);
+    background: linear-gradient(180deg, rgba(109,229,236,1) 0%, rgba(196,250,254,1) 40%, rgba(255,255,255,1) 100%);
+}
+
+.mainContainer {
+    display: flex;
+    background: rgb(122,255,122);
+    background: linear-gradient(90deg, rgba(122,255,122,1) 0%, rgba(122,255,122,1) 0%, rgba(255,255,255,1) 100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.productListContainer {
+    display: flex;
+    flex-grow: 2;
+    flex-wrap: wrap;
+}
+
+.sideBarContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
+.sideBarContainerContainer {
+    min-height: 100%;
+    background: rgb(109,229,236);
+    background: linear-gradient(180deg, rgba(109,229,236,1) 0%, rgba(196,250,254,1) 40%, rgba(255,255,255,1) 100%);
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.unavailableText {
+    color: red;
+}
+
+.description {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}

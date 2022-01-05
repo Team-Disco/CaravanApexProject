@@ -11,21 +11,22 @@ export default class StatGraph extends LightningElement {
     graphSegmentSize = 20;
     @api
     graphSize = 400;
+    @api
+    graphColor = '#5DFFF8B3';
 
     //values affecting graph values
     @api
-    statList = [50, 50, 50, 50, 50]; //util, phys off, phys def, mag def, mag off
+    statList = [0, 0, 0, 0, 0]; //util, phys off, phys def, mag def, mag off
     @api
     statNamesList = ['Utility', 'Physical Offense', 'Physical Defense', 'Magical Defense', 'Magical Offense'];
-    
 
-    constructor() {
-        super();
+    renderedCallback() {
         this.graphCenter[0] = Math.round(this.graphSize/2);
         this.graphCenter[1] = Math.round(this.graphSize/2);
         this.drawStatGraph();
     }
 
+    @api
     drawStatGraph() {
         let canvas = this.template.querySelector('.statgraph');
 
@@ -36,6 +37,10 @@ export default class StatGraph extends LightningElement {
         if (canvas.getContext) {
             //canvas setup
             let context = canvas.getContext('2d');
+
+            //clear canvas for redraws
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = 'Black';
 
             //draw stat graph outline
             context.strokeStyle = 'Grey';
@@ -82,7 +87,7 @@ export default class StatGraph extends LightningElement {
             
 
             //draw stat graph
-            context.fillStyle = '#6FD1F5B3';
+            context.fillStyle = this.graphColor;
             context.beginPath();
             
             rollingDegrees = -90;
@@ -95,9 +100,8 @@ export default class StatGraph extends LightningElement {
 
                 //increment rolling degrees
                 rollingDegrees += degreeChange;
-                console.log('Coordinates: ' + x + ', ' + y);
             }
-
+            
             context.fill();
             context.closePath();
             

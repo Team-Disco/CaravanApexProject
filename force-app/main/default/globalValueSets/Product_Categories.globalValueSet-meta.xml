@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Armor</fullName>
+        <default>false</default>
+        <label>Armor</label>
+    </customValue>
+    <customValue>
+        <fullName>Camping Equipment</fullName>
+        <default>false</default>
+        <label>Camping Equipment</label>
+    </customValue>
+    <customValue>
+        <fullName>Clothing</fullName>
+        <default>false</default>
+        <label>Clothing</label>
+    </customValue>
+    <customValue>
+        <fullName>Magical Weaponry</fullName>
+        <default>false</default>
+        <label>Magical Weaponry</label>
+    </customValue>
+    <customValue>
+        <fullName>Melee Weaponry</fullName>
+        <default>false</default>
+        <label>Melee Weaponry</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Consumable</fullName>
+        <default>false</default>
+        <label>Other Consumable</label>
+    </customValue>
+    <customValue>
+        <fullName>Potion</fullName>
+        <default>false</default>
+        <label>Potion</label>
+    </customValue>
+    <customValue>
+        <fullName>Ranged Weaponry</fullName>
+        <default>false</default>
+        <label>Ranged Weaponry</label>
+    </customValue>
+    <customValue>
+        <fullName>Scroll</fullName>
+        <default>false</default>
+        <label>Scroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Shield</fullName>
+        <default>false</default>
+        <label>Shield</label>
+    </customValue>
+    <customValue>
+        <fullName>Tool</fullName>
+        <default>false</default>
+        <label>Tool</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <description>Possible categories of products</description>
+    <masterLabel>Product Categories</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

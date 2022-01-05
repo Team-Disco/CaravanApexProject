@@ -1,0 +1,16 @@
+h1 {
+    font-family: Papyrus, fantasy;
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.logoandname {
+    display: flex;
+    margin-right: 90px;
+}
+
+.websitelogo {
+    max-height: 80px;
+}
